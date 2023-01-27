@@ -377,7 +377,7 @@ impl SrcSpan {
         // find the start of the current line.
         let mut start = self.range.start;
         for c in self.content[0..start].chars().rev() {
-            if c as char == '\n' || start == 0 {
+            if c == '\n' || start == 0 {
                 break;
             }
             start -= 1;
@@ -390,7 +390,7 @@ impl SrcSpan {
         // find the end of the line
         let mut end = self.range.start;
         for c in self.content[end..].chars() {
-            if c as char == '\n' {
+            if c == '\n' {
                 break;
             }
             end += 1;
@@ -993,6 +993,6 @@ fn source_span_test_next() {
     assert_eq!(sp.loc().loc(), (1, 1));
 
     sp.pos_prev();
-    assert_eq!(sp.as_str(), &content[..]);
+    assert_eq!(sp.as_str(), content);
     assert_eq!(sp.loc().loc(), (1, 1));
 }
