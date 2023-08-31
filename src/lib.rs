@@ -744,7 +744,7 @@ impl InputTake for SrcSpan {
         let first = self.from_self_with_subrange(0..count);
         let second = self.from_self_with_subrange(count..self.input_len());
 
-        // we sould not lose any data
+        // we should not lose any data
         debug_assert_eq!(first.input_len() + second.input_len(), self.input_len());
 
         // suffix goes first
