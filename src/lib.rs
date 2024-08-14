@@ -593,7 +593,7 @@ impl SrcSpanIter {
     ///
     /// The function will panic if the supplied range is outside backing content
     pub fn new(content: Rc<String>, range: Range<usize>) -> Self {
-        assert!(content.len() < range.end);
+        assert!(content.len() <= range.end);
         SrcSpanIter { content, range }
     }
 }
@@ -640,7 +640,7 @@ impl SrcSpanIndices {
     ///
     /// The function will panic if the supplied range is outside backing content
     pub fn new(content: Rc<String>, range: Range<usize>) -> Self {
-        assert!(content.len() < range.end);
+        assert!(content.len() <= range.end);
         let start = range.start;
         SrcSpanIndices {
             content,
